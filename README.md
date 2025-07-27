@@ -11,16 +11,6 @@ portfolio website for a video editor built with React, TypeScript, and Tailwind 
 - **Lucide React** - Beautiful icon library
 - **Framer Motion** - Animation library for React
 
-## 📋 Sections
-
-1. **Home/Hero** - Introduction with animated background
-2. **About Me** - Personal background and skills
-3. **My Projects** - Portfolio of video editing work
-4. **Tech Stack** - Technologies and tools used
-5. **My Certificates** - Professional certifications
-6. **Provide Services** - Rate card and service offerings
-7. **Contact Me** - Contact form and information
-
 ## 🚀 Getting Started
 
 ### Prerequisites
