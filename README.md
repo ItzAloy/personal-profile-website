@@ -1,16 +1,7 @@
 
-# ItzAloy - Video Editor Portfolio Website
+# ItzAloy - Portfolio Website
 
-A modern, responsive portfolio website for a video editor built with React, TypeScript, and Tailwind CSS.
-
-## 🚀 Features
-
-- **Modern Design**: Clean, professional layout with smooth animations
-- **Responsive**: Fully responsive design that works on all devices
-- **Interactive**: Smooth scrolling navigation and hover effects
-- **Portfolio Showcase**: Display of video editing projects with YouTube integration
-- **Services/Rate Card**: Detailed pricing and service information
-- **Contact Form**: Professional contact form for client inquiries
+portfolio website for a video editor built with React, TypeScript, and Tailwind CSS.
 
 ## 🛠️ Tech Stack
 
@@ -29,38 +20,6 @@ A modern, responsive portfolio website for a video editor built with React, Type
 5. **My Certificates** - Professional certifications
 6. **Provide Services** - Rate card and service offerings
 7. **Contact Me** - Contact form and information
-
-## 🎬 Services Offered
-
-### Simple MV - 200k IDR
-- Vocals for solo/duet (maximum 2 people)
-- Maximum video duration 4-5 minutes
-- Simple camera movement
-- 1080p 24fps video resolution
-
-### Complex MV - 300k IDR
-- Vocals for solo/duet (maximum 2 people)
-- Maximum video duration 4-5 minutes
-- Advanced camera movements and effects
-- 1080p 24fps video resolution
-
-### Lyric Video - 100k IDR per song
-- Text-based or animated text lyric animation
-- Perfect sync to beat
-- No background included
-
-## 📝 Rules & Requirements
-
-1. Must provide Character Illustrations, Backgrounds (HD recommended)
-2. Must provide Credits, Parting lyric, and MV references (if available)
-3. You can request fonts or I will choose suitable ones
-4. 1080p 24fps video resolution
-5. Video processing might take 7 days
-6. Payment must be done before sending revised/final video
-7. Please credit as "ItzAloy" and tag on YouTube or add Instagram link
-8. Additional assets if image is PNG without background (+20k IDR)
-9. Max MV is 10 pictures (+50k IDR per 10 pictures)
-10. Rush MV 1-3 days (2x price)
 
 ## 🚀 Getting Started
 
