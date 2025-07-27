@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://instagram.com/itzaloy"
+                href="https://instagram.com/aloykucing1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-pink-500 to-red-500 p-3 rounded-lg hover:scale-110 transition-transform"
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 <Instagram size={20} />
               </a>
               <a
-                href="https://youtube.com/@itzaloy"
+                href="https://youtube.com/@aloymalang"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-red-500 to-red-600 p-3 rounded-lg hover:scale-110 transition-transform"
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
                 <Youtube size={20} />
               </a>
               <a
-                href="mailto:itzaloy@example.com"
+                href="mailto:aloyberkarya@gmail.com"
                 className="bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-lg hover:scale-110 transition-transform"
               >
                 <Mail size={20} />

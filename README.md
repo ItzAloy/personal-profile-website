@@ -57,33 +57,6 @@ npm run build
 
 This builds the app for production to the `build` folder.
 
-## 🎨 Customization
-
-### Colors
-The website uses a purple and pink gradient theme. You can customize colors in:
-- `tailwind.config.js` - Main color palette
-- Component files - Individual component styling
-
-### Content
-Update the following to customize content:
-- Project URLs in `Projects.tsx`
-- Personal information in `About.tsx` and `Hero.tsx`
-- Contact information in `Contact.tsx`
-- Service pricing in `Services.tsx`
-
-### Images
-- Replace placeholder certificate images in `Certificates.tsx`
-- Add your actual project thumbnails
-- Update social media links
-
-## 📱 Responsive Design
-
-The website is fully responsive and optimized for:
-- Mobile devices (320px+)
-- Tablets (768px+)
-- Desktop (1024px+)
-- Large screens (1280px+)
-
 ## 🔧 Available Scripts
 
 - `npm start` - Runs the app in development mode
@@ -98,9 +71,9 @@ This project is licensed under the MIT License.
 ## 👤 Contact
 
 - **Name**: ItzAloy
-- **Instagram**: [@itzaloy](https://instagram.com/itzaloy)
-- **YouTube**: [ItzAloy Channel](https://youtube.com/@itzaloy)
-- **Email**: itzaloy@example.com
+- **Instagram**: [@aloykucing1](https://instagram.com/aloykucing1)
+- **YouTube**: [ItzAloy](https://youtube.com/@aloymalang)
+- **Email**: aloyberkarya@gmail.com
 
 ## 🙏 Acknowledgments
 

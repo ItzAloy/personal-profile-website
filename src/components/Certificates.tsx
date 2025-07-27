@@ -6,43 +6,23 @@ const Certificates: React.FC = () => {
   const certificates = [
     {
       id: 1,
-      title: 'Adobe After Effects Certification',
-      issuer: 'Adobe',
-      date: '2023',
-      description: 'Advanced motion graphics and visual effects certification',
+      title: 'Fortinet: Network Security',
+      issuer: 'Fortinet',
+      date: '2025',
+      description: 'Network security certification focusing on Fortinet technologies',
       image: 'https://placehold.co/400x300',
       link: '#',
-      skills: ['Motion Graphics', 'Visual Effects', 'Animation']
+      skills: ['Network Security', 'Firewall Management', 'Threat Detection']
     },
     {
       id: 2,
-      title: 'Video Editing Professional',
-      issuer: 'Online Course Platform',
-      date: '2022',
-      description: 'Comprehensive video editing and post-production course',
+      title: 'UKL : Network Analysis and Penetration Testing Assessment Level 2 - Telkom, 2025',
+      issuer: 'UKL',
+      date: '2025',
+      description: 'Comprehensive course on network analysis and penetration testing',
       image: 'https://placehold.co/400x300',
       link: '#',
-      skills: ['Video Editing', 'Color Grading', 'Audio Sync']
-    },
-    {
-      id: 3,
-      title: 'Creative Media Production',
-      issuer: 'Media Institute',
-      date: '2023',
-      description: 'Complete media production workflow and best practices',
-      image: 'https://placehold.co/400x300',
-      link: '#',
-      skills: ['Project Management', 'Creative Direction', 'Media Production']
-    },
-    {
-      id: 4,
-      title: 'DaVinci Resolve Mastery',
-      issuer: 'Blackmagic Design',
-      date: '2023',
-      description: 'Professional color grading and video editing certification',
-      image: 'https://placehold.co/400x300',
-      link: '#',
-      skills: ['Color Grading', 'Professional Editing', 'Audio Post']
+      skills: ['Network Analysis', 'Penetration Testing', 'Cybersecurity']
     }
   ];
 
@@ -55,7 +35,7 @@ const Certificates: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Professional certifications and achievements that validate my skills and expertise in video editing
+            Certifications and achievements I have received
           </p>
         </div>
 
@@ -123,8 +103,7 @@ const Certificates: React.FC = () => {
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-8 rounded-2xl text-white max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Continuous Learning</h3>
             <p className="text-white/90 mb-6">
-              I'm constantly upgrading my skills and earning new certifications to stay current with the latest 
-              video editing techniques and technologies.
+              I continue to improve my skills and earn new certifications to stay up to date with the latest techniques and technologies.
             </p>
             <div className="flex justify-center space-x-4">
               <div className="text-center">

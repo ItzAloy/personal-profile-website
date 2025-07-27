@@ -23,6 +23,9 @@ const About: React.FC = () => {
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">My Journey</h3>
               <p className="text-gray-600 leading-relaxed mb-4">
+                Let me introduce myself. My name is Aloy. I'm an active student at SMK Telkom Malang with a deep interest in Network System Administration, Cybersecurity, and Video Editing. Of these three fields, I have the most experience in Video Editing.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
                 I'm just someone who likes making AMV (Anime Music Videos). With 2 years of experience in video editing, 
                 I've developed expertise in various editing software and techniques.
               </p>

@@ -11,106 +11,106 @@ const Projects: React.FC = () => {
       category: 'commission',
       videoId: '0sITj1KFlb4',
       thumbnail: `https://img.youtube.com/vi/0sITj1KFlb4/maxresdefault.jpg`,
-      description: 'Professional commission work showcasing advanced video editing techniques',
+      description: 'Working on 2 parts in a project',
       type: 'Commission Work'
     },
     {
       id: 2,
-      title: 'Solo Project #1',
+      title: 'Solo Project',
       category: 'solo',
       videoId: '5b9rxOv6UPo',
       thumbnail: `https://img.youtube.com/vi/5b9rxOv6UPo/maxresdefault.jpg`,
-      description: 'Personal creative project with unique visual style',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 3,
-      title: 'Solo Project #2',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'cnHS5DszvwA',
       thumbnail: `https://img.youtube.com/vi/cnHS5DszvwA/maxresdefault.jpg`,
-      description: 'Experimental animation techniques and storytelling',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 4,
-      title: 'Solo Project #3',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'HZuFRDok94A',
       thumbnail: `https://img.youtube.com/vi/HZuFRDok94A/maxresdefault.jpg`,
-      description: 'Complex motion graphics and visual effects',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 5,
-      title: 'Solo Project #4',
+      title: 'Solo Project',
       category: 'solo',
       videoId: '_v6wU51lMSk',
       thumbnail: `https://img.youtube.com/vi/_v6wU51lMSk/maxresdefault.jpg`,
-      description: 'Music video with synchronized animation',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 6,
-      title: 'Solo Project #5',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'LHqkGIik0Ho',
       thumbnail: `https://img.youtube.com/vi/LHqkGIik0Ho/maxresdefault.jpg`,
-      description: 'Creative storytelling through visual effects',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 7,
-      title: 'Solo Project #6',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'oMuRhYoPZX4',
       thumbnail: `https://img.youtube.com/vi/oMuRhYoPZX4/maxresdefault.jpg`,
-      description: 'Advanced editing with smooth transitions',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 8,
-      title: 'Solo Project #7',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'MMIPWQac3yQ',
       thumbnail: `https://img.youtube.com/vi/MMIPWQac3yQ/maxresdefault.jpg`,
-      description: 'Dynamic camera movements and effects',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 9,
-      title: 'Solo Project #8',
+      title: 'Solo Project',
       category: 'solo',
       videoId: '7mfos_qfE7o',
       thumbnail: `https://img.youtube.com/vi/7mfos_qfE7o/maxresdefault.jpg`,
-      description: 'Innovative editing techniques showcase',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 10,
-      title: 'Solo Project #9',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'VslbYTiA3IM',
       thumbnail: `https://img.youtube.com/vi/VslbYTiA3IM/maxresdefault.jpg`,
-      description: 'Professional quality music video',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 11,
-      title: 'Solo Project #10',
+      title: 'Solo Project',
       category: 'solo',
       videoId: 'jSoJBxQI1GA',
       thumbnail: `https://img.youtube.com/vi/jSoJBxQI1GA/maxresdefault.jpg`,
-      description: 'Complex animation and visual storytelling',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     },
     {
       id: 12,
-      title: 'Solo Project #11',
+      title: 'Solo Project',
       category: 'solo',
       videoId: '-ieM7HElDqo',
       thumbnail: `https://img.youtube.com/vi/-ieM7HElDqo/maxresdefault.jpg`,
-      description: 'Latest creative project with new techniques',
+      description: 'Personal Project to develop my skills',
       type: 'Solo Project'
     }
   ];

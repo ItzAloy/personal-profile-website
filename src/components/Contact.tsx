@@ -28,20 +28,20 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'itzaloy@example.com',
-      link: 'mailto:itzaloy@example.com'
+      value: 'aloyberkarya@gmail.com',
+      link: 'mailto:aloyberkarya@gmail.com'
     },
     {
       icon: Instagram,
       title: 'Instagram',
-      value: '@itzaloy',
-      link: 'https://instagram.com/itzaloy'
+      value: '@aloykucing1',
+      link: 'https://instagram.com/aloykucing1'
     },
     {
       icon: Youtube,
       title: 'YouTube',
-      value: 'ItzAloy Channel',
-      link: 'https://youtube.com/@itzaloy'
+      value: 'ItzAloy',
+      link: 'https://youtube.com/@aloymalang'
     },
     {
       icon: MapPin,
@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Follow My Work</h4>
               <div className="flex space-x-4">
                 <a
-                  href="https://instagram.com/itzaloy"
+                  href="https://instagram.com/aloykucing1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-pink-500 to-red-500 p-3 rounded-lg text-white hover:scale-110 transition-transform"
@@ -129,7 +129,7 @@ const Contact: React.FC = () => {
                   <Instagram size={20} />
                 </a>
                 <a
-                  href="https://youtube.com/@itzaloy"
+                  href="https://youtube.com/@aloymalang"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-red-500 to-red-600 p-3 rounded-lg text-white hover:scale-110 transition-transform"
