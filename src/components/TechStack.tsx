@@ -55,25 +55,25 @@ const TechStack: React.FC = () => {
   const getLevelColor = (level: string) => {
     switch (level) {
       case 'Advanced':
-        return 'bg-green-100 text-green-800';
+        return 'bg-green-500/20 text-green-400';
       case 'Intermediate':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-yellow-500/20 text-yellow-400';
       case 'Learning':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary-500/20 text-primary-400';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-500/20 text-gray-400';
     }
   };
 
   return (
-    <section id="tech-stack" className="py-20 bg-gray-50">
+    <section id="tech-stack" className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Stack</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Stack</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Tools and technologies I use to create amazing video content and web experiences
           </p>
         </div>
@@ -82,26 +82,26 @@ const TechStack: React.FC = () => {
           {technologies.map((tech, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-primary-500 transition-all duration-300 transform hover:scale-105"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="text-center">
                 <div className="text-4xl mb-4">{tech.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{tech.name}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">{tech.name}</h3>
                 <div className="flex justify-center mb-4">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${getLevelColor(tech.level)}`}>
                     {tech.level}
                   </span>
                 </div>
-                <p className="text-gray-600 mb-4">{tech.description}</p>
-                <div className="text-sm text-purple-600 font-medium">{tech.category}</div>
+                <p className="text-gray-300 mb-4">{tech.description}</p>
+                <div className="text-sm text-primary-400 font-medium">{tech.category}</div>
               </div>
               
               {/* Progress Bar */}
               <div className="mt-6">
-                <div className="bg-gray-200 rounded-full h-2">
+                <div className="bg-gray-700 rounded-full h-2">
                   <div 
-                    className={`bg-gradient-to-r ${tech.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                    className={`bg-gradient-to-r from-primary-400 to-primary-600 h-2 rounded-full transition-all duration-1000 ease-out`}
                     style={{ 
                       width: tech.level === 'Advanced' ? '75%' : 
                              tech.level === 'Intermediate' ? '35%' : '15%' 
@@ -115,40 +115,40 @@ const TechStack: React.FC = () => {
 
         {/* Skills Categories */}
         <div className="mt-16 grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
               <span className="text-3xl mr-3">🎬</span>
               Video Editing Expertise
             </h3>
             <ul className="space-y-3">
               <li className="flex items-center">
-                <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                <span className="text-gray-700">Motion Graphics & Animation</span>
+                <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                <span className="text-gray-300">Motion Graphics & Animation</span>
               </li>
               <li className="flex items-center">
-                <div className="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
-                <span className="text-gray-700">Color Grading & Correction</span>
+                <div className="w-2 h-2 bg-primary-400 rounded-full mr-3"></div>
+                <span className="text-gray-300">Color Grading & Correction</span>
               </li>
               <li className="flex items-center">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                <span className="text-gray-700">Visual Effects (VFX)</span>
+                <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
+                <span className="text-gray-300">Visual Effects (VFX)</span>
               </li>
               <li className="flex items-center">
                 <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                <span className="text-gray-700">Audio Synchronization</span>
+                <span className="text-gray-300">Audio Synchronization</span>
               </li>
             </ul>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
               <span className="text-3xl mr-3">💻</span>
               Web Development Learning
             </h3>
             <ul className="space-y-3">
               <li className="flex items-center">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                <span className="text-gray-700">Still learning to make a website</span>
+                <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                <span className="text-gray-300">Still learning to make a website</span>
               </li>
             </ul>
           </div>

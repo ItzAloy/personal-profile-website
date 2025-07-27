@@ -106,27 +106,27 @@ const Services: React.FC = () => {
     const iconClass = "w-6 h-6";
     switch (type) {
       case 'requirement':
-        return <Check className={`${iconClass} text-blue-500`} />;
+        return <Check className={`${iconClass} text-primary-500`} />;
       case 'timeline':
         return <Clock className={`${iconClass} text-yellow-500`} />;
       case 'payment':
         return <CreditCard className={`${iconClass} text-green-500`} />;
       case 'addon':
-        return <Zap className={`${iconClass} text-purple-500`} />;
+        return <Zap className={`${iconClass} text-primary-400`} />;
       default:
         return <AlertTriangle className={`${iconClass} text-gray-500`} />;
     }
   };
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Provide <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Services</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Provide <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Services</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Professional video editing services with transparent pricing and clear requirements
           </p>
           
@@ -142,34 +142,34 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className={`relative bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 ${
-                service.popular ? 'ring-2 ring-purple-500' : ''
+              className={`relative bg-gray-900 rounded-2xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-all duration-300 ${
+                service.popular ? 'ring-2 ring-primary-500' : ''
               }`}
             >
               {service.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-2 text-sm font-semibold">
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center py-2 text-sm font-semibold">
                   Most Popular
                 </div>
               )}
               
-              <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
+              <div className={`h-2 bg-gradient-to-r from-primary-400 to-primary-600`}></div>
               
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">{service.price}</span>
+                  <span className="text-4xl font-bold text-white">{service.price}</span>
                 </div>
                 
                 <ul className="space-y-3 mb-8">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
                       <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600">{feature}</span>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <button className={`w-full bg-gradient-to-r ${service.color} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300`}>
+                <button className={`w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300`}>
                   Choose Plan
                 </button>
               </div>
@@ -179,17 +179,17 @@ const Services: React.FC = () => {
 
         {/* Rules Section */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Rules & Requirements</h3>
+          <h3 className="text-3xl font-bold text-white mb-8 text-center">Rules & Requirements</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rules.map((rule, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
+              <div key={index} className="bg-gray-900 p-6 rounded-xl border border-gray-700">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     {getRuleIcon(rule.type)}
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{rule.title}</h4>
-                    <p className="text-gray-600">{rule.description}</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">{rule.title}</h4>
+                    <p className="text-gray-300">{rule.description}</p>
                   </div>
                 </div>
               </div>
@@ -199,13 +199,13 @@ const Services: React.FC = () => {
 
         {/* Add-ons Section */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Additional Services</h3>
+          <h3 className="text-3xl font-bold text-white mb-8 text-center">Additional Services</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {addOns.map((addon, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <h4 className="text-xl font-semibold text-gray-900 mb-3">{addon.title}</h4>
-                <p className="text-gray-600 mb-4">{addon.description}</p>
-                <div className="text-2xl font-bold text-purple-600">{addon.price}</div>
+              <div key={index} className="bg-gray-900 p-6 rounded-xl border border-gray-700">
+                <h4 className="text-xl font-semibold text-white mb-3">{addon.title}</h4>
+                <p className="text-gray-300 mb-4">{addon.description}</p>
+                <div className="text-2xl font-bold text-primary-500">{addon.price}</div>
               </div>
             ))}
           </div>
@@ -213,7 +213,7 @@ const Services: React.FC = () => {
 
         {/* Contact CTA */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-8 rounded-2xl text-white max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-8 rounded-2xl text-white max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Ready to Start Your Project?</h3>
             <p className="text-white/90 mb-6">
               Contact me to discuss your video editing needs and get a custom quote for your project.
@@ -225,7 +225,7 @@ const Services: React.FC = () => {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
             >
               Get In Touch
             </button>
