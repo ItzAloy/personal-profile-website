@@ -10,19 +10,19 @@ const Certificates: React.FC = () => {
       issuer: 'Fortinet',
       date: '2025',
       description: 'Network security certification focusing on Fortinet technologies',
-      image: 'https://placehold.co/400x300',
-      link: '#',
+      image: '/img/certificate/Fortinet.webp',
+      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
       skills: ['Network Security', 'Firewall Management', 'Threat Detection']
     },
     {
       id: 2,
-      title: 'UKL : Network Analysis and Penetration Testing Assessment Level 2 - Telkom, 2025',
+      title: 'CyberHeroes: Network Analysis & Penetration Testing',
       issuer: 'UKL',
       date: '2025',
-      description: 'Comprehensive course on network analysis and penetration testing',
-      image: 'https://placehold.co/400x300',
-      link: '#',
-      skills: ['Network Analysis', 'Penetration Testing', 'Cybersecurity']
+      description: 'Ethical Hacking and Penetration Testing',
+      image: '/img/certificate/CyberHeroes.webp',
+      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      skills: ['Ethical Hacking', 'Penetration Testing', 'Cybersecurity']
     },
     {
       id: 3,
@@ -30,18 +30,18 @@ const Certificates: React.FC = () => {
       issuer: 'INACOMP',
       date: '2025',
       description: 'Participate as a PARTICIPANT in the Inacomp 2025 Event in the Context of UNJ\'s 61st Anniversary',
-      image: 'https://placehold.co/400x300',
-      link: '#',
+      image: '/img/certificate/InaComp.webp',
+      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
       skills: ['Networking', 'Cisco Technologies', 'Competition']
     },
-    {
+        {
       id: 4,
       title: 'Moklet Got Talent - Sound Engineering',
       issuer: 'MGT',
       date: '2024',
       description: 'Creative character education activities through Moklet Got Talent (MGT) by the Moklet Art Club (MAC) sub-organ of SMK Telkom Malang for the 2023/2024 academic year.',
-      image: 'https://placehold.co/400x300',
-      link: '#',
+      image: '/img/certificate/SoundEngineer.webp',
+      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
       skills: ['Sound Engineering', 'Audio Production', 'Creative Arts']
     }
   ];

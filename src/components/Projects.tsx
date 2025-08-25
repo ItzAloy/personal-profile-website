@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Play, Award } from 'lucide-react';
+import { ExternalLink, Play, Award, User } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -16,109 +16,109 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: '5b9rxOv6UPo',
       thumbnail: `https://img.youtube.com/vi/5b9rxOv6UPo/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 3,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'cnHS5DszvwA',
       thumbnail: `https://img.youtube.com/vi/cnHS5DszvwA/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 4,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'HZuFRDok94A',
       thumbnail: `https://img.youtube.com/vi/HZuFRDok94A/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 5,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: '_v6wU51lMSk',
       thumbnail: `https://img.youtube.com/vi/_v6wU51lMSk/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 6,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'LHqkGIik0Ho',
       thumbnail: `https://img.youtube.com/vi/LHqkGIik0Ho/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 7,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'oMuRhYoPZX4',
       thumbnail: `https://img.youtube.com/vi/oMuRhYoPZX4/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 8,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'MMIPWQac3yQ',
       thumbnail: `https://img.youtube.com/vi/MMIPWQac3yQ/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 9,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: '7mfos_qfE7o',
       thumbnail: `https://img.youtube.com/vi/7mfos_qfE7o/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 10,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'VslbYTiA3IM',
       thumbnail: `https://img.youtube.com/vi/VslbYTiA3IM/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 11,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: 'jSoJBxQI1GA',
       thumbnail: `https://img.youtube.com/vi/jSoJBxQI1GA/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 12,
-      title: 'Solo Project',
-      category: 'solo',
+      title: 'Personal Project',
+      category: 'personal',
       videoId: '-ieM7HElDqo',
       thumbnail: `https://img.youtube.com/vi/-ieM7HElDqo/maxresdefault.jpg`,
       description: 'Personal Project to develop my skills',
-      type: 'Solo Project'
+      type: 'Personal Project'
     },
     {
       id: 13,
       title: 'Christmast Graphic',
       category: 'commission',
       videoId: '#',
-      thumbnail: `https://placehold.co/1280x720`,
+      thumbnail: `/img/Christmast_Graphic.webp`,
       description: 'Working on Christmast Graphic for GPdi Elohim Sidoarjo',
       type: 'Commission Work',
       externalLink: 'https://www.instagram.com/shalom.crtv/'
@@ -193,9 +193,9 @@ const Projects: React.FC = () => {
       title: 'Social Media Content',
       category: 'commission',
       videoId: '#',
-      thumbnail: `https://placehold.co/1280x720`,
+      thumbnail: `img/Lyric_Animation.webp`,
       description: 'Lirik Animation for Gospel Song',
-      type: 'Comission Work',
+      type: 'Commission Work',
       externalLink: 'https://drive.google.com/drive/folders/12bcsfqaafI-xq5FgMX4wztTSgTjJbr1J?usp=sharing'
     }
   ];
@@ -203,7 +203,7 @@ const Projects: React.FC = () => {
   const categories = [
     { id: 'all', label: 'All Projects', icon: Play },
     { id: 'commission', label: 'Commission', icon: Award },
-    { id: 'solo', label: 'Solo Projects', icon: Play },
+    { id: 'personal', label: 'Personal Projects', icon: User }
   ];
 
   const filteredProjects = activeCategory === 'all' 
