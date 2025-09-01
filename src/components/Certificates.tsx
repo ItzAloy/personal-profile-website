@@ -1,6 +1,5 @@
 import React from 'react';
 import { Award, Calendar, ExternalLink } from 'lucide-react';
-import { title } from 'process';
 
 const Certificates: React.FC = () => {
   // Sample certificates - you can replace these with actual certificates
