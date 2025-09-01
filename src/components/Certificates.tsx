@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Calendar, ExternalLink } from 'lucide-react';
+import { title } from 'process';
 
 const Certificates: React.FC = () => {
   // Sample certificates - you can replace these with actual certificates
@@ -43,6 +44,16 @@ const Certificates: React.FC = () => {
       image: '/img/certificate/SoundEngineer.webp',
       link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
       skills: ['Sound Engineering', 'Audio Production', 'Creative Arts']
+    },
+    {
+      id: 5,
+      title: 'UKM Laos: Pelatihan CTF 2025',
+      issuer: 'UKM Laos',
+      date: '2025',
+      description: 'CTF training program organized by UKM Laos',
+      image: '/img/certificate/UKMLaos.webp',
+      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      skills: ['Capture The Flag', 'Cybersecurity', 'Network Defense']
     }
   ];
 

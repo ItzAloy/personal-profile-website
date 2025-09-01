@@ -12,7 +12,8 @@ const Projects: React.FC = () => {
       videoId: '0sITj1KFlb4',
       thumbnail: `https://img.youtube.com/vi/0sITj1KFlb4/maxresdefault.jpg`,
       description: 'Working on 2 parts in a project',
-      type: 'Commission Work'
+      type: 'Commission Work',
+      externalLink: 'https://www.behance.net/gallery/233605565/Flaminggo-Idol-Go-Toubun-no-Katachi'
     },
     {
       id: 2,
@@ -176,7 +177,7 @@ const Projects: React.FC = () => {
       thumbnail: `https://img.youtube.com/vi/MA85u2UL39Y/maxresdefault.jpg`,
       description: 'Working on Assets for the Moklet Youth DigiTalent event',
       type: 'Commission Work',
-      externalLink: 'https://www.instagram.com/smktelkommalang/p/moklet-youth-digitalent/'
+      externalLink: 'https://www.behance.net/gallery/233600481/Kick-Off-Moklet-Youth-Digitalent'
     },
     {
       id: 20,
@@ -186,7 +187,7 @@ const Projects: React.FC = () => {
       thumbnail: `https://img.youtube.com/vi/fGJVEqx_LJQ/maxresdefault.jpg`,
       description: 'Working on Assets for the 32nd Dies Natalis event of SMK Telkom Malang',
       type: 'Commission Work',
-      externalLink: 'https://www.instagram.com/smktelkommalang/p/dies-natalis-32/'
+      externalLink: 'https://www.behance.net/gallery/233607467/Dies-Natalis-32-Specta-Show'
     },
     {
       id: 21,
