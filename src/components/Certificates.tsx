@@ -11,7 +11,7 @@ const Certificates: React.FC = () => {
       date: '2025',
       description: 'Network security certification focusing on Fortinet technologies',
       image: '/img/certificate/Fortinet.webp',
-      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      link: 'https://drive.google.com/file/d/15_tlI6N2YlDPHEVUGA2GGRK-Dcw91vCK/view?usp=sharing',
       skills: ['Network Security', 'Firewall Management', 'Threat Detection']
     },
     {
@@ -21,7 +21,7 @@ const Certificates: React.FC = () => {
       date: '2025',
       description: 'Ethical Hacking and Penetration Testing',
       image: '/img/certificate/CyberHeroes.webp',
-      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      link: 'https://drive.google.com/file/d/120rkh_MM9pJAHWMD5J8mTaGVsVLOyS49/view?usp=sharing',
       skills: ['Ethical Hacking', 'Penetration Testing', 'Cybersecurity']
     },
     {
@@ -31,7 +31,7 @@ const Certificates: React.FC = () => {
       date: '2025',
       description: 'Participate as a PARTICIPANT in the Inacomp 2025 Event in the Context of UNJ\'s 61st Anniversary',
       image: '/img/certificate/InaComp.webp',
-      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      link: 'https://drive.google.com/file/d/19x29YUqsFR_0_-IS2KrTE3hGAJTrl28s/view?usp=sharing',
       skills: ['Networking', 'Cisco Technologies', 'Competition']
     },
         {
@@ -41,7 +41,7 @@ const Certificates: React.FC = () => {
       date: '2024',
       description: 'Creative character education activities through Moklet Got Talent (MGT) by the Moklet Art Club (MAC) sub-organ of SMK Telkom Malang for the 2023/2024 academic year.',
       image: '/img/certificate/SoundEngineer.webp',
-      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      link: 'https://drive.google.com/file/d/1HgOqK45r38CBFTTrgMqTdFBLoUuvquGB/view?usp=sharing',
       skills: ['Sound Engineering', 'Audio Production', 'Creative Arts']
     },
     {
@@ -51,10 +51,32 @@ const Certificates: React.FC = () => {
       date: '2025',
       description: 'CTF training program organized by UKM Laos',
       image: '/img/certificate/UKMLaos.webp',
-      link: 'https://drive.google.com/drive/folders/1FNKyT4D38OjlOw8UKF1reXCuzFmy7Atz?usp=sharing',
+      link: 'https://drive.google.com/file/d/1H5oNWylYyFakv4919d6U9TvLvUC72znk/view?usp=sharing',
       skills: ['Capture The Flag', 'Cybersecurity', 'Network Defense']
-    }
+    },
+    {
+      id: 6,
+      title: 'IT Specialist: Cybersecurity',
+      issuer: 'CertiPort',
+      date: '2025',
+      description: 'Cybersecurity certification focusing on IT specialist skills',
+      image: '/img/certificate/CyberSecurity.webp',
+      link: 'https://drive.google.com/file/d/1zYWiWXrIiAigiF-y3EjwhWstF0ahr-U1/view?usp=sharing',
+      skills: ['Cybersecurity', 'Ethical Hacking', 'Security Analysis']
+    },
+    {
+      id: 7,
+      title: 'METIC: Motion Video Editor',
+      issuer: 'METIC',
+      date: '2025',
+      description: 'Certificate achievement In recognition of active participation and outstanding service as part of METIC',
+      image: '/img/certificate/MotionVideoEditor.webp',
+      link: 'https://drive.google.com/file/d/1QyR5R0SNUMjotD-EPNiG2mkZT_ThJERg/view?usp=sharing',
+      skills: ['Video Editing', 'Motion Graphics', 'Creative Design']}
   ];
+
+  // Sort certificates by ID in descending order (newest first)
+  const sortedCertificates = [...certificates].sort((a, b) => b.id - a.id);
 
   return (
     <section id="certificates" className="py-20 bg-gray-900">
@@ -70,7 +92,7 @@ const Certificates: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {certificates.map((cert, index) => (
+          {sortedCertificates.map((cert, index) => (
             <div 
               key={cert.id}
               className="bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-primary-500/20 hover:border-primary-500/40"

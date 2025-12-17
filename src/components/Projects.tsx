@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Play, Award, User } from 'lucide-react';
+import { ExternalLink, Play, Award, User, Globe } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -198,18 +198,32 @@ const Projects: React.FC = () => {
       description: 'Lirik Animation for Gospel Song',
       type: 'Commission Work',
       externalLink: 'https://drive.google.com/drive/folders/12bcsfqaafI-xq5FgMX4wztTSgTjJbr1J?usp=sharing'
+    },
+    {
+      id: 22,
+      title: 'WowSkill - Wikusama WorldSkill Competition',
+      category: 'website',
+      videoId: '#',
+      thumbnail: `/img/WowSkill_Website.webp`,
+      description: 'Website Registration for WorldSkill Competition at SMK Telkom Malang',
+      type: 'Website Project',
+      externalLink: 'https://wowskill.smktelkom-mlg.sch.id/'
     }
   ];
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: Play },
     { id: 'commission', label: 'Commission', icon: Award },
-    { id: 'personal', label: 'Personal Projects', icon: User }
+    { id: 'personal', label: 'Personal Projects', icon: User },
+    { id: 'website', label: 'Website', icon: Globe }
   ];
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeCategory);
+
+  // Sort projects by ID in descending order (newest first)
+  const sortedProjects = [...filteredProjects].sort((a, b) => b.id - a.id);
 
   const openVideo = (videoId: string) => {
     window.open(`https://youtu.be/${videoId}`, '_blank');
@@ -262,7 +276,7 @@ const Projects: React.FC = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {sortedProjects.map((project, index) => (
             <div 
               key={project.id}
               className="bg-gray-700/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-primary-500/20 hover:border-primary-500/40"
@@ -312,7 +326,7 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {filteredProjects.length === 0 && (
+        {sortedProjects.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-400 text-lg">No projects found in this category.</p>
           </div>
