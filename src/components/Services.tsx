@@ -1,236 +1,154 @@
 import React from 'react';
-import { Check, Clock, AlertTriangle, CreditCard, Image, Users, Zap } from 'lucide-react';
+import { ParticleCard } from './MagicBento';
+import FadeContent from './FadeContent';
 
 const Services: React.FC = () => {
   const services = [
     {
       title: 'SIMPLE MV',
       price: '200k',
-      features: [
-        'Vocals for solo/duet (maximum 2 people)',
-        'Maximum video duration is 4-5 minutes',
-        'Simple camera movement',
-        '1080p 24fps video resolution',
-        'Basic motion graphics'
-      ],
-      popular: false,
-      color: 'from-blue-500 to-cyan-500'
+      description: 'Basic music video with simple transitions and effects. Perfect for beginners or budget-friendly projects.',
+      features: ['Simple transitions', 'Basic color grading', 'Text overlays', '5-7 days delivery']
     },
     {
       title: 'COMPLEX MV',
       price: '300k',
-      features: [
-        'Vocals for solo/duet (maximum 2 people)',
-        'Maximum video duration is 4-5 minutes',
-        'Advanced camera movements',
-        'Complex visual effects',
-        'Professional motion graphics',
-        '1080p 24fps video resolution'
-      ],
-      popular: true,
-      color: 'from-purple-500 to-pink-500'
+      description: 'Advanced music video with complex effects, motion graphics and professional editing.',
+      features: ['Advanced effects', 'Motion graphics', 'Professional color grading', '7-10 days delivery']
     },
     {
       title: 'LYRIC VIDEO',
-      price: '100k Per Song',
-      features: [
-        'Text-based or Animated text lyric animation',
-        'Sync to beat perfectly',
-        'No Background included',
-        'Custom typography options',
-        'Multiple animation styles'
-      ],
-      popular: false,
-      color: 'from-green-500 to-teal-500'
+      price: '100k',
+      description: 'Clean and creative text-based lyric animation synchronized with your music.',
+      features: ['Typography animation', 'Sync with music', 'Custom fonts', '3-5 days delivery']
     }
   ];
 
-  const rules = [
-    {
-      icon: Image,
-      title: 'Provide Materials',
-      description: 'Must provide Character Illustrations, Backgrounds (HD recommended)',
-      type: 'requirement'
-    },
-    {
-      icon: Users,
-      title: 'Credits & References',
-      description: 'Must provide Credits, Parting lyric, and MV references (if you have)',
-      type: 'requirement'
-    },
-    {
-      icon: Clock,
-      title: 'Processing Time',
-      description: 'Video processing might takes 7 days',
-      type: 'timeline'
-    },
-    {
-      icon: CreditCard,
-      title: 'Payment Policy',
-      description: 'Payment must be done before I send the revised/final video',
-      type: 'payment'
-    },
-    {
-      icon: AlertTriangle,
-      title: 'Credit Required',
-      description: 'Please credit me as "ItzAloy" tag me on YouTube or add Instagram link',
-      type: 'requirement'
-    },
-    {
-      icon: Zap,
-      title: 'Rush Orders',
-      description: 'Rush MV 1-3 days (2x price)',
-      type: 'addon'
-    }
+  const additionalInfo = [
+    { title: 'Additional Background Assets', description: 'If image is PNG/no BG', price: '+20k' },
+    { title: 'Extra Pictures', description: 'Max MV is 10 pictures', price: '+50k' },
+    { title: 'Rush Delivery', description: '1-3 days delivery time', price: '2x Price' }
   ];
 
-  const addOns = [
-    {
-      title: 'Additional Background Assets',
-      description: 'If your image is only a png/doesn\'t have a background',
-      price: '+20k'
-    },
-    {
-      title: 'Extra Pictures',
-      description: 'Max MV is 10 pictures',
-      price: '+50k/10 pictures'
-    },
-    {
-      title: 'Rush Delivery',
-      description: '1-3 days delivery time',
-      price: '2x price'
-    }
+  const rulesTerms = [
+    { icon: '📁', title: 'Provide Materials', description: 'Character Illustrations, Backgrounds (HD recommended)' },
+    { icon: '📝', title: 'Credits & References', description: 'Parting lyric, MV references (if you have)' },
+    { icon: '🏷️', title: 'Credit Required', description: 'Credit me as "ItzAloy" on YouTube/Instagram' },
+    { icon: '⏱️', title: 'Processing Time', description: 'Video processing takes around 7 days' },
+    { icon: '💳', title: 'Payment Policy', description: 'Payment before final video delivery' },
+    { icon: '🚀', title: 'Rush Orders', description: 'Rush MV 1-3 days available (2x price)' }
   ];
-
-  const getRuleIcon = (type: string) => {
-    const iconClass = "w-6 h-6";
-    switch (type) {
-      case 'requirement':
-        return <Check className={`${iconClass} text-primary-500`} />;
-      case 'timeline':
-        return <Clock className={`${iconClass} text-yellow-500`} />;
-      case 'payment':
-        return <CreditCard className={`${iconClass} text-green-500`} />;
-      case 'addon':
-        return <Zap className={`${iconClass} text-primary-400`} />;
-      default:
-        return <AlertTriangle className={`${iconClass} text-gray-500`} />;
-    }
-  };
 
   return (
-    <section id="services" className="py-20 bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Provide <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Services</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Professional video editing services with transparent pricing and clear requirements
-          </p>
-          
-          {/* Status Badge */}
-          <div className="inline-flex items-center bg-red-500 text-white px-6 py-3 rounded-full text-lg font-semibold mt-6 animate-pulse">
-            <div className="w-3 h-3 bg-white rounded-full mr-3 animate-ping"></div>
-            STATUS: CLOSE!
-          </div>
-        </div>
-
-        {/* Service Packages */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className={`relative bg-gray-900 rounded-2xl border border-gray-700 overflow-hidden transform hover:scale-105 transition-all duration-300 ${
-                service.popular ? 'ring-2 ring-primary-500' : ''
-              }`}
-            >
-              {service.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center py-2 text-sm font-semibold">
-                  Most Popular
-                </div>
-              )}
-              
-              <div className={`h-2 bg-gradient-to-r from-primary-400 to-primary-600`}></div>
-              
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-white">{service.price}</span>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button className={`w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300`}>
-                  Choose Plan
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Rules Section */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">Rules & Requirements</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rules.map((rule, index) => (
-              <div key={index} className="bg-gray-900 p-6 rounded-xl border border-gray-700">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    {getRuleIcon(rule.type)}
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">{rule.title}</h4>
-                    <p className="text-gray-300">{rule.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Add-ons Section */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">Additional Services</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {addOns.map((addon, index) => (
-              <div key={index} className="bg-gray-900 p-6 rounded-xl border border-gray-700">
-                <h4 className="text-xl font-semibold text-white mb-3">{addon.title}</h4>
-                <p className="text-gray-300 mb-4">{addon.description}</p>
-                <div className="text-2xl font-bold text-primary-500">{addon.price}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Contact CTA */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-8 rounded-2xl text-white max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Ready to Start Your Project?</h3>
-            <p className="text-white/90 mb-6">
-              Contact me to discuss your video editing needs and get a custom quote for your project.
+    <section id="services" className="py-8 bg-[#050505]">
+      <div className="max-w-[1112px] mx-auto px-[20px]">
+        {/* Section Header */}
+        <FadeContent blur duration={0.6} delay={0.1} yOffset={30}>
+          <div className="text-center mb-8">
+            <h2 className="text-[36px] font-bold text-white font-montserrat uppercase">
+              Provide Services
+            </h2>
+            <p className="text-[14px] text-white/60 font-montserrat mt-2">
+              Professional video editing services for your creative needs
             </p>
-            <button 
-              onClick={() => {
-                const contactSection = document.querySelector('#contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Get In Touch
-            </button>
           </div>
-        </div>
+        </FadeContent>
+
+        {/* Service Cards - Clean Design */}
+        <FadeContent blur duration={0.8} delay={0.2} yOffset={40}>
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {services.map((service, index) => (
+              <ParticleCard
+                key={index}
+                className="rounded-[8px] h-full"
+                style={{}}
+                glowColor="0, 187, 255"
+                enableTilt={true}
+                particleCount={8}
+              >
+                <div className="border border-white/20 rounded-[8px] p-6 h-full bg-[#050505] hover:border-white/50 transition-all duration-300">
+                  {/* Price Badge */}
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-[20px] font-bold text-white font-montserrat">{service.title}</h3>
+                    <span className="text-[24px] font-bold text-[#00bbff] font-montserrat">{service.price}</span>
+                  </div>
+                  
+                  {/* Description */}
+                  <p className="text-[13px] text-white/70 font-montserrat mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  {/* Features List */}
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-[12px] text-white/60 font-montserrat">
+                        <span className="w-1 h-1 bg-[#00bbff] rounded-full"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ParticleCard>
+            ))}
+          </div>
+        </FadeContent>
+
+        {/* Additional Info & Rules - Compact Layout */}
+        <FadeContent blur duration={0.8} delay={0.3} yOffset={40}>
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Additional Info */}
+            <ParticleCard
+              className="rounded-[8px] h-full"
+              style={{}}
+              glowColor="255, 157, 0"
+              enableTilt={true}
+              particleCount={8}
+            >
+              <div className="border border-white/10 rounded-[8px] p-6 h-full bg-[#050505]">
+                <h3 className="text-[18px] font-bold text-white font-montserrat uppercase mb-4">
+                  Additional Pricing
+                </h3>
+                <div className="space-y-3">
+                  {additionalInfo.map((info, index) => (
+                    <div key={index} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
+                      <div>
+                        <span className="text-[13px] text-white font-montserrat">{info.title}</span>
+                        <p className="text-[11px] text-white/50 font-montserrat">{info.description}</p>
+                      </div>
+                      <span className="text-[14px] font-bold text-[#ff9d00] font-montserrat">{info.price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ParticleCard>
+
+            {/* Rules & Terms */}
+            <ParticleCard
+              className="rounded-[8px] h-full"
+              style={{}}
+              glowColor="132, 0, 255"
+              enableTilt={true}
+              particleCount={8}
+            >
+              <div className="border border-white/10 rounded-[8px] p-6 h-full bg-[#050505]">
+                <h3 className="text-[18px] font-bold text-white font-montserrat uppercase mb-4">
+                  Terms & Conditions
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {rulesTerms.map((rule, index) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <span className="text-[16px]">{rule.icon}</span>
+                      <div>
+                        <span className="text-[12px] text-white font-montserrat font-medium block">{rule.title}</span>
+                        <p className="text-[10px] text-white/50 font-montserrat">{rule.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ParticleCard>
+          </div>
+        </FadeContent>
       </div>
     </section>
   );

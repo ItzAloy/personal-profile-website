@@ -1,11 +1,26 @@
-/* Custom styles for the application */
+/* Custom styles for the application - Figma Design */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #050505;
+  color: #ffffff;
 }
 
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050505;
 }
 
 /* Custom animations */
@@ -24,40 +39,187 @@ html {
   animation: fadeIn 0.8s ease-out;
 }
 
-/* Loading animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+/* Consolas font for special elements */
+.font-consolas {
+  font-family: 'Consolas', monospace;
 }
 
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Montserrat font */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
 }
 
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar - Dark theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8b5cf6, #ec4899);
+  background: #333333;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #7c3aed, #db2777);
+  background: #555555;
+}
+
+/* Gradient text utility */
+.text-gradient-blue {
+  color: #00bbff;
+}
+
+.text-gradient-pink {
+  color: #ff0099;
+}
+
+.text-gradient-purple {
+  color: #bf00ff;
+}
+
+.text-gradient-orange {
+  color: #ff9d00;
+}
+
+.text-gradient-dark-blue {
+  color: #3700ff;
+}
+
+/* Section styling */
+section {
+  background-color: #050505;
+}
+
+/* Border utilities */
+.border-white-thin {
+  border: 1px solid #ffffff;
+}
+
+/* Container max width */
+.container-custom {
+  max-width: 1112px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Carousel scroll animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll-left:hover,
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+/* Modal backdrop blur */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Tech stack skill bar animation */
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+}
+
+/* Dither background performance optimization */
+canvas {
+  image-rendering: pixelated;
+}
+
+/* Skeleton wave animation */
+@keyframes skeleton-wave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-wave {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-wave 1.5s ease-in-out infinite;
+}
+
+/* Optimize images */
+img {
+  content-visibility: auto;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* GPU acceleration for animations */
+.animate-pulse,
+.animate-bounce,
+.skeleton-wave {
+  will-change: opacity, transform;
+}
+
+/* Performance: content-visibility for below-fold sections */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Smooth transition between splash and content */
+.App {
+  opacity: 1;
+  animation: appFadeIn 0.5s ease-out;
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

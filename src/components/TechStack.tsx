@@ -1,158 +1,141 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FadeContent from './FadeContent';
+
+interface TechLogo {
+  name: string;
+  skillLevel: number;
+  icon?: React.ReactNode;
+  iconImage?: string; // For PNG/image icons
+}
 
 const TechStack: React.FC = () => {
-  const technologies = [
+  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+
+  // Tech stack icons - using actual logos with skill levels
+  const techLogos: TechLogo[] = [
     {
-      name: 'Adobe After Effects',
-      category: 'Video Editing',
-      level: 'Advanced',
-      color: 'from-purple-500 to-blue-500',
-      description: 'Motion graphics, visual effects, and animation',
-      icon: '🎬'
+      name: 'Premiere Pro',
+      skillLevel: 90,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77" fill="none">
+          <path d="M0 27.6119C0 17.9469 0 13.1143 1.88095 9.42276C3.53549 6.17556 6.17556 3.53549 9.42276 1.88095C13.1143 0 17.9469 0 27.6119 0H48.6844C58.3495 0 63.1821 0 66.8734 1.88095C70.1207 3.53549 72.7608 6.17556 74.4153 9.42276C76.2963 13.1143 76.2963 17.9469 76.2963 27.6119V48.6844C76.2963 58.3495 76.2963 63.1821 74.4153 66.8734C72.7608 70.1207 70.1207 72.7608 66.8734 74.4153C63.1821 76.2963 58.3495 76.2963 48.6844 76.2963H27.6119C17.9469 76.2963 13.1143 76.2963 9.42276 74.4153C6.17556 72.7608 3.53549 70.1207 1.88095 66.8734C0 63.1821 0 58.3495 0 48.6844V27.6119Z" fill="#00005B"/>
+          <path d="M16.3492 53.9407V19.6408C16.3492 19.4074 16.4449 19.2741 16.6681 19.2741C19.9631 19.2741 23.2565 19.0741 26.5525 19.0741C31.9003 19.0741 37.6912 20.938 39.721 26.6408C40.1992 28.0408 40.4542 29.4741 40.4542 30.9741C40.4542 33.8407 39.8166 36.2072 38.5411 38.0741C34.9786 43.2884 28.8035 43.2074 23.2682 43.2074V53.9072C23.3116 54.2241 23.0467 54.3739 22.79 54.3739H16.7319C16.4768 54.3739 16.3492 54.2407 16.3492 53.9407ZM23.3001 25.7075V36.9073C25.495 37.0713 27.7915 37.089 29.9003 36.374C32.2284 35.6895 33.5034 33.6355 33.5034 31.1741C33.5682 29.0768 32.4469 27.0642 30.5382 26.3075C28.4547 25.4244 25.5492 25.3715 23.3001 25.7075Z" fill="#9999FF"/>
+          <path d="M44.7764 27.8261H50.3722C50.6806 27.829 50.9577 28.0517 51.0392 28.3629C51.4493 29.3146 51.5 30.4626 51.5013 31.4902C52.461 30.322 53.618 29.349 54.9151 28.619C56.3061 27.7964 57.883 27.3792 59.4808 27.4116C59.7463 27.3718 59.9809 27.6173 59.943 27.8944V34.3881C59.943 34.639 59.7713 34.7638 59.4296 34.7638C57.0612 34.593 53.3739 35.178 51.6529 37.1252V54.0096C51.6529 54.3317 51.5161 54.4927 51.2422 54.4927H45.2385C44.9437 54.5368 44.6835 54.2594 44.7251 53.9559V35.6224C44.7251 33.166 44.7761 30.6354 44.4172 28.2018C44.3619 27.9778 44.5668 27.7696 44.7764 27.8261Z" fill="#9999FF"/>
+        </svg>
+      )
     },
     {
-      name: 'Adobe Premiere Pro',
-      category: 'Video Editing',
-      level: 'Advanced',
-      color: 'from-pink-500 to-purple-500',
-      description: 'Professional video editing and post-production',
-      icon: '🎥'
+      name: 'After Effects',
+      skillLevel: 90,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77" fill="none">
+          <path d="M0 27.6119C0 17.9469 0 13.1143 1.88095 9.42276C3.53549 6.17556 6.17556 3.53549 9.42276 1.88095C13.1143 0 17.9469 0 27.6119 0H48.6844C58.3495 0 63.1821 0 66.8734 1.88095C70.1207 3.53549 72.7608 6.17556 74.4153 9.42276C76.2963 13.1143 76.2963 17.9469 76.2963 27.6119V48.6844C76.2963 58.3495 76.2963 63.1821 74.4153 66.8734C72.7608 70.1207 70.1207 72.7608 66.8734 74.4153C63.1821 76.2963 58.3495 76.2963 48.6844 76.2963H27.6119C17.9469 76.2963 13.1143 76.2963 9.42276 74.4153C6.17556 72.7608 3.53549 70.1207 1.88095 66.8734C0 63.1821 0 58.3495 0 48.6844V27.6119Z" fill="#00005B"/>
+          <path d="M32.1243 47.8591H20.3014L17.8958 55.5381C17.829 55.8228 17.5668 56.0244 17.2816 56.0105H11.2933C10.9518 56.0105 10.8324 55.8182 10.9351 55.4331L21.1714 25.3212C21.2738 25.0065 21.3761 24.6985 21.4786 24.2958C21.6125 23.5952 21.681 22.8835 21.6833 22.1699C21.654 21.959 21.836 21.7721 22.0415 21.8023H30.1795C30.418 21.8023 30.5542 21.8897 30.5888 22.0647L42.2074 55.4855C42.3096 55.8359 42.2071 56.0108 41.9003 56.0105H35.2464C35.0132 56.037 34.7903 55.877 34.7347 55.643L32.1243 47.8591ZM22.1439 41.3845H30.2308C28.9021 36.8444 27.4026 32.3641 26.1873 27.7885C24.8102 32.5347 23.5385 36.9365 22.1439 41.3845Z" fill="#9999FF"/>
+          <path d="M50.8482 44.8941C51.3188 48.7932 54.593 50.6521 58.2185 50.5728C60.2629 50.5327 62.4477 50.2153 64.3581 49.4422C64.5282 49.303 64.614 49.3899 64.614 49.7049V54.6917C64.6301 54.9511 64.5216 55.183 64.3069 55.3217C61.9325 56.4002 59.207 56.7255 56.6318 56.6841C48.9536 56.6841 43.6807 51.2742 43.6829 43.4031C43.6628 35.944 48.5018 29.6512 56.0176 29.6512C62.3886 29.4861 66.7993 34.5868 66.817 40.936C66.817 42.0922 66.7525 43.2527 66.6124 44.4004C66.5852 44.6369 66.3838 44.8206 66.1516 44.8206C61.0635 44.8206 55.9506 44.8941 50.8482 44.8941ZM50.8482 40.112C53.684 40.112 56.5361 40.2123 59.37 40.0858C59.7959 40.0422 60.1122 39.9613 60.1122 39.5185C60.0531 37.1648 58.0667 35.2288 55.7617 35.319C52.9769 35.1462 51.1946 37.4972 50.8482 40.112Z" fill="#9999FF"/>
+        </svg>
+      )
     },
     {
       name: 'DaVinci Resolve',
-      category: 'Video Editing',
-      level: 'Intermediate',
-      color: 'from-orange-500 to-red-500',
-      description: 'Color grading and professional editing',
-      icon: '🎨'
+      skillLevel: 80,
+      iconImage: process.env.PUBLIC_URL + '/img/davinci-resolve.png'
     },
     {
-      name: 'React JS',
-      category: 'Web Development',
-      level: 'Learning',
-      color: 'from-blue-400 to-cyan-400',
-      description: 'Modern JavaScript library for building UIs',
-      icon: '⚛️'
+      name: 'React',
+      skillLevel: 15,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77" fill="none">
+          <path d="M38.1482 44.9433C41.901 44.9433 44.9433 41.901 44.9433 38.1482C44.9433 34.3953 41.901 31.353 38.1482 31.353C34.3953 31.353 31.353 34.3953 31.353 38.1482C31.353 41.901 34.3953 44.9433 38.1482 44.9433Z" fill="#61DAFB"/>
+          <path d="M63.9577 26.9421C62.6464 26.4653 61.2754 25.9884 59.8449 25.5712C60.2025 24.1406 60.5006 22.7101 60.739 21.3391C61.9907 13.4711 60.6198 7.92766 56.805 5.78183C55.6724 5.12616 54.4207 4.82812 52.9901 4.82812C48.8177 4.82812 43.5127 7.92766 38.1481 13.1134C32.7835 7.92766 27.4786 4.82812 23.3061 4.82812C21.8756 4.82812 20.6238 5.12616 19.4913 5.78183C15.6765 7.98727 14.3055 13.5307 15.5573 21.3391C15.7957 22.7101 16.0937 24.1406 16.4514 25.5712C15.0208 25.9884 13.6499 26.4057 12.3385 26.9421C4.88771 29.8032 0.834473 33.7373 0.834473 38.1481C0.834473 42.559 4.94732 46.4931 12.3385 49.3542C13.6499 49.831 15.0208 50.3079 16.4514 50.7251C16.0937 52.1557 15.7957 53.5862 15.5573 54.9572C14.3055 62.8252 15.6765 68.3686 19.4913 70.5145C20.6238 71.1701 21.8756 71.4682 23.3061 71.4682C27.5382 71.4682 32.8432 68.3686 38.1481 63.1829C43.5127 68.3686 48.8177 71.4682 52.9901 71.4682C54.4207 71.4682 55.6724 71.1701 56.805 70.5145C60.6198 68.309 61.9907 62.7656 60.739 54.9572C60.5006 53.5862 60.2025 52.1557 59.8449 50.7251C61.2754 50.3079 62.6464 49.8906 63.9577 49.3542C71.4085 46.4931 75.4618 42.559 75.4618 38.1481C75.4618 33.7373 71.4085 29.8032 63.9577 26.9421ZM55.136 8.76215C57.5798 10.1927 58.4143 14.6036 57.401 20.8623C57.2222 22.114 56.9242 23.4253 56.5665 24.7963C53.467 24.081 50.1886 23.6042 46.7315 23.3061C44.7048 20.445 42.6186 17.8819 40.5324 15.5573C44.9433 11.206 49.4138 8.22569 53.0497 8.22569C53.8246 8.22569 54.5399 8.40451 55.136 8.76215ZM48.4601 44.1088C47.3871 46.0162 46.1354 47.9236 44.8241 49.831C42.6186 50.0098 40.4132 50.0694 38.1481 50.0694C35.8235 50.0694 33.618 50.0098 31.4722 49.831C30.1609 47.9236 28.9687 46.0162 27.8958 44.1088C26.7633 42.1418 25.6904 40.1152 24.7367 38.1481C25.6904 36.1811 26.7633 34.1545 27.8958 32.1875C28.9687 30.2801 30.2205 28.3727 31.5318 26.4653C33.7373 26.2865 35.9427 26.2269 38.2077 26.2269C40.5324 26.2269 42.7378 26.2865 44.8837 26.4653C46.195 28.3727 47.3871 30.2801 48.4601 32.1875C49.5926 34.1545 50.6655 36.1811 51.6192 38.1481C50.6059 40.1152 49.5926 42.0822 48.4601 44.1088ZM53.4074 42.1418C54.3015 44.228 55.0168 46.2546 55.6724 48.2812C53.6458 48.7581 51.5 49.1157 49.2349 49.4138C49.9502 48.2812 50.7251 47.0891 51.3808 45.8374C52.096 44.5856 52.7517 43.3339 53.4074 42.1418ZM38.1481 58.2951C36.7176 56.7454 35.3466 55.0764 34.0353 53.3478C35.4062 53.4074 36.7772 53.467 38.1481 53.467C39.5191 53.467 40.89 53.4074 42.261 53.3478C40.9496 55.0764 39.5787 56.7454 38.1481 58.2951ZM27.0613 49.3542C24.7963 49.0561 22.6504 48.6985 20.6238 48.2216C21.2795 46.2546 21.9948 44.1684 22.8889 42.0822C23.5445 43.2743 24.2002 44.526 24.9155 45.7182C25.6308 47.0295 26.346 48.162 27.0613 49.3542ZM22.8889 34.1545C21.9948 32.0683 21.2795 30.0417 20.6238 28.015C22.6504 27.5382 24.7963 27.1806 27.0613 26.8825C26.346 28.015 25.5712 29.2072 24.9155 30.4589C24.2002 31.7106 23.5445 32.9624 22.8889 34.1545ZM38.1481 18.0012C39.5787 19.5509 40.9496 21.2199 42.261 22.9485C40.89 22.8889 39.5191 22.8293 38.1481 22.8293C36.7772 22.8293 35.4062 22.8889 34.0353 22.9485C35.3466 21.2199 36.7176 19.5509 38.1481 18.0012ZM51.3808 30.5185L49.2349 26.9421C51.5 27.2402 53.6458 27.5978 55.6724 28.0747C55.0168 30.0417 54.3015 32.1279 53.4074 34.2141C52.7517 32.9624 52.096 31.7106 51.3808 30.5185ZM18.8952 20.8623C17.8819 14.6036 18.7164 10.1927 21.1603 8.76215C21.7563 8.40451 22.4716 8.22569 23.2465 8.22569C26.8229 8.22569 31.2934 11.1464 35.7639 15.5573C33.6776 17.8223 31.5914 20.445 29.5648 23.3061C26.1076 23.6042 22.8293 24.1406 19.7297 24.7963C19.3721 23.4253 19.1337 22.114 18.8952 20.8623ZM4.17244 38.1481C4.17244 35.3466 7.57001 32.3663 13.5307 30.1609C14.7228 29.684 16.0341 29.2668 17.3455 28.9091C18.2992 31.8895 19.4913 35.0486 20.9219 38.2078C19.4913 41.3669 18.2396 44.4664 17.3455 47.4468C9.11977 45.0625 4.17244 41.4861 4.17244 38.1481ZM21.1603 67.5341C18.7164 66.1036 17.8819 61.6927 18.8952 55.434C19.0741 54.1823 19.3721 52.8709 19.7297 51.5C22.8293 52.2153 26.1076 52.6921 29.5648 52.9902C31.5914 55.8513 33.6776 58.4144 35.7639 60.739C31.353 65.0903 26.8825 68.0706 23.2465 68.0706C22.4716 68.0706 21.7563 67.8918 21.1603 67.5341ZM57.401 55.434C58.4143 61.6927 57.5798 66.1036 55.136 67.5341C54.5399 67.8918 53.8246 68.0706 53.0497 68.0706C49.4734 68.0706 45.0029 65.1499 40.5324 60.739C42.6186 58.474 44.7048 55.8513 46.7315 52.9902C50.1886 52.6921 53.467 52.1557 56.5665 51.5C56.9242 52.8709 57.1626 54.1823 57.401 55.434ZM62.7656 46.1354C61.5735 46.6123 60.2621 47.0295 58.9508 47.3872C57.9971 44.4068 56.805 41.2477 55.3744 38.0885C56.805 34.9294 58.0567 31.8299 58.9508 28.8495C67.1765 31.2338 72.1238 34.8102 72.1238 38.1481C72.1238 40.9497 68.6666 43.93 62.7656 46.1354Z" fill="#61DAFB"/>
+        </svg>
+      )
     },
     {
       name: 'TypeScript',
-      category: 'Web Development',
-      level: 'Learning',
-      color: 'from-blue-600 to-blue-800',
-      description: 'Typed superset of JavaScript',
-      icon: '📘'
+      skillLevel: 15,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77" fill="none">
+          <path d="M13.5128 28.0151H72.9226V71.9272H13.5128V28.0151Z" fill="white"/>
+          <path d="M0.894104 38.0945V75.3486H75.4022V0.840454H0.894104V38.0945ZM60.9357 35.1142C62.7203 35.5283 64.3422 36.4617 65.5969 37.7965C66.2877 38.5156 66.8882 39.3163 67.3851 40.1807C67.3851 40.2761 64.1664 42.4517 62.2053 43.6677C62.1338 43.7154 61.8477 43.4054 61.5318 42.9345C61.1738 42.3168 60.6651 41.7999 60.0533 41.4319C59.4414 41.064 58.7463 40.8571 58.0329 40.8304C55.7738 40.6755 54.3194 41.8616 54.3313 43.8108C54.3126 44.296 54.4237 44.7775 54.6532 45.2056C55.1479 46.2367 56.0718 46.8507 58.9687 48.1024C64.3035 50.3973 66.5864 51.9113 68.005 54.0631C69.5906 56.4473 69.9423 60.2979 68.8693 63.1471C67.6772 66.2466 64.7565 68.3507 60.6258 69.0481C58.7391 69.2642 56.8329 69.2442 54.9512 68.9885C52.0672 68.5132 49.4107 67.1285 47.3693 65.0366C46.6838 64.2796 45.3486 62.3067 45.4321 62.1636C45.6497 62.0021 45.8788 61.8566 46.1175 61.7285L48.8773 60.2025L51.0172 58.9627L51.4642 59.6244C52.2187 60.7036 53.1789 61.6232 54.2896 62.3305C56.6739 63.5822 59.9284 63.4094 61.5377 61.9609C62.0781 61.4302 62.4152 60.7267 62.4903 59.973C62.5655 59.2193 62.3739 58.4632 61.949 57.8362C61.353 57.0076 60.1608 56.3102 56.8288 54.8558C52.9842 53.1988 51.3271 52.1736 49.8131 50.5403C48.868 49.4626 48.1702 48.191 47.7686 46.8149C47.4691 45.2428 47.4249 43.6326 47.6375 42.0464C48.4303 38.3329 51.2139 35.74 55.2791 34.9711C57.1617 34.7382 59.0687 34.7904 60.9357 35.1261V35.1142ZM43.4472 38.2376V41.2894H33.773V68.8455H26.9123V41.2835H17.2144V38.3031C17.1842 37.2754 17.208 36.2467 17.2859 35.2215C17.3336 35.1678 23.2465 35.1678 30.3993 35.1678H43.4114L43.4472 38.2376Z" fill="#007ACC"/>
+        </svg>
+      )
     },
     {
       name: 'Tailwind CSS',
-      category: 'Web Development',
-      level: 'Learning',
-      color: 'from-teal-400 to-blue-500',
-      description: 'Utility-first CSS framework',
-      icon: '🎨'
+      skillLevel: 15,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="77" height="77" viewBox="0 0 77 77" fill="none">
+          <g clip-path="url(#clip0_26_123)">
+            <path d="M38.1507 15.2605C27.9777 15.2605 21.6218 20.3449 19.0766 30.518C22.8903 25.4329 27.3423 23.5261 32.4273 24.7975C35.3307 25.5212 37.4056 27.6265 39.7035 29.9595C43.4432 33.7546 47.7718 38.1482 57.2248 38.1482C67.3972 38.1482 73.7537 33.0632 76.2989 22.8877C72.4846 27.9758 68.0332 29.8826 62.9476 28.6112C60.0448 27.8869 57.9723 25.7822 55.6714 23.4492C51.9341 19.6541 47.6067 15.2605 38.1507 15.2605ZM19.0766 38.1482C8.90419 38.1482 2.54776 43.2332 0.00256348 53.4086C3.81619 48.3206 8.2676 46.4138 13.3532 47.6852C16.2567 48.4095 18.3316 50.5142 20.6294 52.8472C24.3691 56.6423 28.6977 61.0359 38.1507 61.0359C48.3232 61.0359 54.6796 55.9515 57.2248 45.7784C53.4106 50.8635 48.9592 52.7703 43.8735 51.4989C40.9707 50.7752 38.8982 48.6699 36.5974 46.3369C32.86 42.5418 28.5326 38.1482 19.0766 38.1482Z" fill="#38BDF8"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_26_123">
+              <rect width="76.2963" height="76.2963" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      )
     }
   ];
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'Advanced':
-        return 'bg-green-500/20 text-green-400';
-      case 'Intermediate':
-        return 'bg-yellow-500/20 text-yellow-400';
-      case 'Learning':
-        return 'bg-primary-500/20 text-primary-400';
-      default:
-        return 'bg-gray-500/20 text-gray-400';
-    }
-  };
-
   return (
-    <section id="tech-stack" className="py-20 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Stack</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Tools and technologies I use to create amazing video content and web experiences
-          </p>
-        </div>
+    <section id="tech-stack" className="py-16 bg-[#050505]">
+      <div className="max-w-[1112px] mx-auto px-[20px]">
+        {/* Section Header */}
+        <FadeContent blur duration={0.6} delay={0.1} yOffset={30}>
+          <div className="text-center mb-12">
+            <h2 className="text-[36px] font-bold text-white font-montserrat">TECH STACK</h2>
+          </div>
+        </FadeContent>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {technologies.map((tech, index) => (
-            <div 
-              key={index}
-              className="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-primary-500 transition-all duration-300 transform hover:scale-105"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-4">{tech.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{tech.name}</h3>
-                <div className="flex justify-center mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getLevelColor(tech.level)}`}>
-                    {tech.level}
-                  </span>
-                </div>
-                <p className="text-gray-300 mb-4">{tech.description}</p>
-                <div className="text-sm text-primary-400 font-medium">{tech.category}</div>
+        {/* Tech Icons Grid */}
+        <FadeContent blur duration={0.8} delay={0.2} yOffset={40}>
+          <div className="flex justify-center items-center gap-4 flex-wrap mb-8">
+            {techLogos.map((tech, index) => (
+              <div 
+                key={index}
+                className="relative cursor-pointer group"
+                onMouseEnter={() => setHoveredTech(tech.name)}
+                onMouseLeave={() => setHoveredTech(null)}
+              >
+              {/* Icon Container */}
+              <div className={`w-[77px] h-[77px] transition-all duration-300 ${hoveredTech === tech.name ? 'scale-110' : ''}`}>
+                {tech.iconImage ? (
+                  <img 
+                    src={tech.iconImage} 
+                    alt={tech.name}
+                    className="w-full h-full object-contain rounded-[8px]"
+                  />
+                ) : (
+                  tech.icon
+                )}
               </div>
               
-              {/* Progress Bar */}
-              <div className="mt-6">
-                <div className="bg-gray-700 rounded-full h-2">
+              {/* Skill Level Overlay - Shows on hover */}
+              <div className={`absolute inset-0 w-[77px] h-[77px] flex flex-col items-center justify-center bg-black/85 transition-all duration-300 ${
+                hoveredTech === tech.name ? 'opacity-100 scale-110' : 'opacity-0 pointer-events-none'
+              }`}>
+                <span className="text-[24px] font-bold text-white font-montserrat">{tech.skillLevel}%</span>
+                <div className="w-[50px] h-[4px] bg-white/20 rounded-full mt-2 overflow-hidden">
                   <div 
-                    className={`bg-gradient-to-r from-primary-400 to-primary-600 h-2 rounded-full transition-all duration-1000 ease-out`}
-                    style={{ 
-                      width: tech.level === 'Advanced' ? '75%' : 
-                             tech.level === 'Intermediate' ? '35%' : '15%' 
-                    }}
-                  ></div>
+                    className="h-full bg-white rounded-full transition-all duration-500"
+                    style={{ width: hoveredTech === tech.name ? `${tech.skillLevel}%` : '0%' }}
+                  />
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Skills Categories */}
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <span className="text-3xl mr-3">🎬</span>
-              Video Editing Expertise
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                <span className="text-gray-300">Motion Graphics & Animation</span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-primary-400 rounded-full mr-3"></div>
-                <span className="text-gray-300">Color Grading & Correction</span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-primary-600 rounded-full mr-3"></div>
-                <span className="text-gray-300">Visual Effects (VFX)</span>
-              </li>
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                <span className="text-gray-300">Audio Synchronization</span>
-              </li>
-            </ul>
           </div>
+        </FadeContent>
 
-          <div className="bg-gray-800 p-8 rounded-2xl border border-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <span className="text-3xl mr-3">💻</span>
-              Web Development Learning
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                <span className="text-gray-300">Still learning to make a website</span>
-              </li>
-            </ul>
+        {/* Subtitle */}
+        <FadeContent blur duration={0.6} delay={0.3} yOffset={30}>
+          <div className="text-center">
+            <p className="text-[14px] text-white font-montserrat">
+              Video Editing Expertise & Learning Web Development
+            </p>
           </div>
-        </div>
+        </FadeContent>
       </div>
     </section>
   );

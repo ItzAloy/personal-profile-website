@@ -1,7 +1,14 @@
-import React from 'react';
-import { ChevronDown, Play, Star } from 'lucide-react';
+import React, { useRef } from 'react';
+// @ts-ignore
+import DarkVeil from './DarkVeil.jsx';
+import VariableProximity from './VariableProximity';
+import FadeContent from './FadeContent';
+import './DarkVeil.css';
 
 const Hero: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = React.useState(false);
+  
   const scrollToAbout = () => {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
@@ -10,74 +17,71 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-primary-900">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 animate-float">
-          <Play className="text-primary-500/20 w-8 h-8" />
-        </div>
-        <div className="absolute top-40 right-20 animate-float delay-1000">
-          <Star className="text-primary-400/20 w-6 h-6" />
-        </div>
-        <div className="absolute bottom-40 left-20 animate-float delay-2000">
-          <Play className="text-primary-500/20 w-10 h-10" />
-        </div>
-        <div className="absolute bottom-20 right-10 animate-float delay-500">
-          <Star className="text-primary-400/20 w-8 h-8" />
-        </div>
+    <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-[#050505] pt-20 relative overflow-hidden">
+      {/* DarkVeil Background Effect with #050505 base */}
+      <div className="absolute inset-0 w-full h-full z-0 bg-[#050505]">
+        <DarkVeil
+          hueShift={35}
+          noiseIntensity={0}
+          scanlineIntensity={0}
+          speed={0.5}
+          scanlineFrequency={0}
+          warpAmount={0}
+          resolutionScale={1}
+        />
       </div>
+      
+      <div ref={containerRef} className="text-center px-4 relative z-10">
+        {/* Main Title with Variable Proximity Effect */}
+        <div className="mb-4">
+          <VariableProximity
+            label="Hi, I'm Aloy"
+            className="text-[64px] font-bold text-white font-montserrat"
+            fromFontVariationSettings="'wght' 400"
+            toFontVariationSettings="'wght' 900"
+            containerRef={containerRef}
+            radius={150}
+            falloff="gaussian"
+          />
+        </div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Aloy</span>
-          </h1>
-          
-          <div className="inline-flex items-center bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-pulse">
-            <div className="w-2 h-2 bg-white rounded-full mr-2 animate-ping"></div>
-            STATUS: CLOSE!
-          </div>
-          
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Just someone who likes making <span className="font-semibold text-primary-400">AMV</span>
+        {/* Subtitle - keeping original Figma design */}
+        <FadeContent blur duration={0.6} delay={0.2} yOffset={15}>
+          <p className="text-[14px] text-white font-montserrat mb-6 text-center">
+            Just someone who likes making {' '}
+            <span className="font-semibold text-[#00bbff]">AMV</span>{' '}
           </p>
-          
-          <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            I have <span className="font-semibold text-primary-400">2 years experience</span> of video editing, 
-            capable of using certain editing software such as 
-            <span className="font-semibold text-blue-400"> Adobe After Effect</span>, 
-            <span className="font-semibold text-green-400"> Adobe Premiere Pro</span>, and 
-            <span className="font-semibold text-orange-400"> DaVinci Resolve</span>.
+        </FadeContent>
+
+        {/* Description - keeping original Figma design */}
+        <FadeContent blur duration={0.8} delay={0.3} yOffset={20}>
+          <p className="text-[14px] text-white font-montserrat leading-relaxed max-w-[424px] mx-auto mb-8 text-center">
+            I have 2 years experience of video editing, capable of using certain editing software such as{' '}
+            <span className="font-semibold text-[#3700ff]">Adobe After Effect</span>,{' '}
+            <span className="font-semibold text-[#bf00ff]">Adobe Premiere Pro</span>, and{' '}
+            <span className="font-semibold text-[#ff9d00]">DaVinci Resolve</span>.
           </p>
+        </FadeContent>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button 
-              onClick={scrollToAbout}
-              className="bg-primary-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25"
-            >
-              Learn More About Me
-            </button>
-            <button 
-              onClick={() => {
-                const servicesSection = document.querySelector('#services');
-                if (servicesSection) {
-                  servicesSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="border-2 border-primary-500 text-primary-400 px-8 py-3 rounded-full font-semibold hover:bg-primary-500 hover:text-white transition-all duration-300 transform hover:scale-105"
-            >
-              View My Services
-            </button>
-          </div>
+        {/* Learn More Button */}
+        <button 
+          onClick={scrollToAbout}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="text-[12px] text-white font-consolas hover:opacity-80 transition-all"
+        >
+          <span className={`transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>[</span>
+          Learn More About Me
+          <span className={`transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>]</span>
+        </button>
 
-          <div className="animate-bounce">
-            <button onClick={scrollToAbout} className="text-gray-400 hover:text-primary-400 transition-colors">
-              <ChevronDown size={32} />
-            </button>
-          </div>
+        {/* Arrow Down */}
+        <div className="mt-8">
+          <button onClick={scrollToAbout} className="text-white hover:opacity-80 transition-opacity animate-bounce">
+            <svg width="8" height="24" viewBox="0 0 8 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 0V22M4 22L1 19M4 22L7 19" stroke="white" strokeWidth="2"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>

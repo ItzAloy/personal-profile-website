@@ -4,11 +4,26 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#050505" />
     <meta
       name="description"
       content="ItzAloy - Portfolio Website"
     />
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://img.youtube.com" />
+    
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" />
+    
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -67,6 +82,19 @@
       }
     </script>
     <title>ItzAloy - Portfolio Website</title>
+    
+    <!-- Critical CSS for splash screen - prevents FOUC -->
+    <style>
+      body {
+        background-color: #050505;
+        margin: 0;
+        padding: 0;
+      }
+      #root {
+        min-height: 100vh;
+        background-color: #050505;
+      }
+    </style>
   </head>
   <body class="dark bg-gray-900">
     <noscript>You need to enable JavaScript to run this app.</noscript>

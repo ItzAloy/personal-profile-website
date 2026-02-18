@@ -1,10 +1,39 @@
-import React, { useState } from 'react';
-import { ExternalLink, Play, Award, User, Globe } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { ExternalLink, Play, X } from 'lucide-react';
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  videoId: string;
+  thumbnail: string;
+  description: string;
+  type: string;
+  externalLink?: string;
+}
 
 const Projects: React.FC = () => {
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<Project | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const projects = [
+  // Handle modal open with animation
+  const openModal = () => {
+    setShowAllProjects(true);
+    setTimeout(() => setIsModalVisible(true), 10);
+  };
+
+  // Handle modal close with animation
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setTimeout(() => setShowAllProjects(false), 300);
+  };
+
+  const projects: Project[] = [
     {
       id: 1,
       title: 'Commission Project',
@@ -212,126 +241,221 @@ const Projects: React.FC = () => {
   ];
 
   const categories = [
-    { id: 'all', label: 'All Projects', icon: Play },
-    { id: 'commission', label: 'Commission', icon: Award },
-    { id: 'personal', label: 'Personal Projects', icon: User },
-    { id: 'website', label: 'Website', icon: Globe }
+    { id: 'all', label: 'All Project' },
+    { id: 'commission', label: 'Commission' },
+    { id: 'personal', label: 'Personal Project' },
+    { id: 'website', label: 'Website' }
   ];
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeCategory);
 
-  // Sort projects by ID in descending order (newest first)
-  const sortedProjects = [...filteredProjects].sort((a, b) => b.id - a.id);
+  // Carousel always shows all projects, sorted by id descending
+  const carouselProjects = [...projects].sort((a, b) => b.id - a.id);
+  
+  // Grid in modal uses filtered projects
+  const gridProjects = [...filteredProjects].sort((a, b) => b.id - a.id);
 
-  const openVideo = (videoId: string) => {
-    window.open(`https://youtu.be/${videoId}`, '_blank');
+  // Auto-scroll carousel
+  useEffect(() => {
+    if (showAllProjects) return;
+    
+    const interval = setInterval(() => {
+      setScrollPosition(prev => prev + 1);
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [showAllProjects]);
+
+  const handleProjectClick = (project: Project) => {
+    if (project.videoId && project.videoId !== '#') {
+      setSelectedVideo(project);
+    } else if (project.externalLink) {
+      window.open(project.externalLink, '_blank');
+    }
   };
 
-  const openExternalLink = (link: string) => {
-    window.open(link, '_blank');
-  };
-
-  const handleProjectClick = (project: any) => {
-    if (project.externalLink) {
-      openExternalLink(project.externalLink);
-    } else if (project.videoId && project.videoId !== '#') {
-      openVideo(project.videoId);
+  const getCategoryColor = (category: string) => {
+    switch(category) {
+      case 'commission': return 'bg-[#00bbff]';
+      case 'personal': return 'bg-[#ff0099]';
+      case 'website': return 'bg-[#3700ff]';
+      default: return 'bg-white/20';
     }
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-600">Projects</span>
+    <section id="projects" className="py-16 bg-[#050505] overflow-hidden">
+      <div className="max-w-[1112px] mx-auto px-[20px]">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-[36px] font-bold text-white font-montserrat uppercase">
+            The project I created
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Explore my collection of video editing projects, from professional commissions to personal creative works
+          <p className="text-[14px] text-white font-montserrat mt-2">
+            Video Editing Expertise & Learning Web Development
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-gray-700/50 p-2 rounded-xl flex space-x-2 border border-primary-500/20">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-600/50'
-                }`}
+        {/* Scrolling Carousel */}
+        <div className="relative mb-8 overflow-hidden">
+          <div 
+            ref={carouselRef}
+            className="flex gap-4 animate-scroll"
+            style={{
+              transform: `translateX(-${scrollPosition % (carouselProjects.length * 360)}px)`,
+              width: `${carouselProjects.length * 2 * 360}px`
+            }}
+          >
+            {/* Duplicate items for infinite scroll */}
+            {[...carouselProjects, ...carouselProjects].map((project, index) => (
+              <div 
+                key={`${project.id}-${index}`}
+                className="bg-[#d9d9d9] rounded-[5px] h-[180px] w-[340px] flex-shrink-0 cursor-pointer overflow-hidden group relative"
+                onClick={() => handleProjectClick(project)}
               >
-                <category.icon size={18} />
-                <span>{category.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sortedProjects.map((project, index) => (
-            <div 
-              key={project.id}
-              className="bg-gray-700/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-primary-500/20 hover:border-primary-500/40"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="relative group cursor-pointer" onClick={() => handleProjectClick(project)}>
                 <img 
                   src={project.thumbnail} 
                   alt={project.title}
-                  className="w-full h-48 object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://via.placeholder.com/480x270/374151/00AAFF?text=Video+Thumbnail';
-                  }}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="bg-primary-500/20 backdrop-blur-sm rounded-full p-4 border border-primary-500/50">
-                    <Play className="w-8 h-8 text-primary-400" fill="currentColor" />
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4">
-                  <span className="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center">
+                  <Play className="w-12 h-12 text-white mb-2" fill="currentColor" />
+                  <span className={`text-[10px] text-white px-2 py-1 rounded ${getCategoryColor(project.category)}`}>
                     {project.type}
                   </span>
                 </div>
               </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <button
-                  onClick={() => handleProjectClick(project)}
-                  className="flex items-center space-x-2 text-primary-400 hover:text-primary-300 font-medium transition-colors"
-                >
-                  <span>
-                    {project.externalLink 
-                      ? 'View Project' 
-                      : project.videoId && project.videoId !== '#' 
-                        ? 'Watch on YouTube' 
-                        : 'View Details'
-                    }
-                  </span>
-                  <ExternalLink size={16} />
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {sortedProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-400 text-lg">No projects found in this category.</p>
-          </div>
-        )}
+        {/* All Projects Button with Bracket Hover Effect */}
+        <div className="flex justify-center">
+          <button
+            onClick={openModal}
+            onMouseEnter={() => setHoveredButton('all')}
+            onMouseLeave={() => setHoveredButton(null)}
+            className="text-[12px] text-white font-consolas hover:opacity-80 transition-all"
+          >
+            <span className={`transition-opacity duration-200 ${hoveredButton === 'all' ? 'opacity-100' : 'opacity-0'}`}>[</span>
+            All Project
+            <span className={`transition-opacity duration-200 ${hoveredButton === 'all' ? 'opacity-100' : 'opacity-0'}`}>]</span>
+          </button>
+        </div>
       </div>
+
+      {/* All Projects Modal */}
+      {showAllProjects && (
+        <div className={`fixed inset-0 bg-black/90 z-50 overflow-y-auto transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`max-w-[1112px] mx-auto px-[20px] py-8 transition-all duration-300 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-[36px] font-bold text-white font-montserrat uppercase">
+                All Projects
+              </h2>
+              <button 
+                onClick={closeModal}
+                className="text-white hover:opacity-80 transition-opacity"
+              >
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Category Filter - Centered */}
+            <div className="flex justify-center gap-6 mb-8">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  onMouseEnter={() => setHoveredButton(category.id)}
+                  onMouseLeave={() => setHoveredButton(null)}
+                  className={`text-[12px] font-consolas transition-all ${
+                    activeCategory === category.id
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  <span className={`transition-opacity duration-200 ${
+                    hoveredButton === category.id || activeCategory === category.id ? 'opacity-100' : 'opacity-0'
+                  }`}>[</span>
+                  {category.label}
+                  <span className={`transition-opacity duration-200 ${
+                    hoveredButton === category.id || activeCategory === category.id ? 'opacity-100' : 'opacity-0'
+                  }`}>]</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-3 gap-4">
+              {gridProjects.map((project, index) => (
+                <div 
+                  key={project.id}
+                  className={`bg-[#d9d9d9] rounded-[5px] h-[180px] cursor-pointer overflow-hidden group relative transition-all duration-500 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+                  style={{ transitionDelay: `${index * 50}ms` }}
+                  onClick={() => handleProjectClick(project)}
+                >
+                  <img 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+                    <Play className="w-10 h-10 text-white mb-2" fill="currentColor" />
+                    <p className="text-white text-[12px] text-center font-montserrat mb-2">{project.title}</p>
+                    <span className={`text-[10px] text-white px-2 py-1 rounded ${getCategoryColor(project.category)}`}>
+                      {project.type}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video Player Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-4xl">
+            <button 
+              onClick={() => setSelectedVideo(null)}
+              className="absolute -top-12 right-0 text-white hover:opacity-80 transition-opacity"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <div className="aspect-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              />
+            </div>
+            <div className="mt-4 text-center">
+              <h3 className="text-white font-montserrat font-bold text-xl">{selectedVideo.title}</h3>
+              <p className="text-white/70 font-montserrat text-sm mt-2">{selectedVideo.description}</p>
+              {selectedVideo.externalLink && (
+                <a 
+                  href={selectedVideo.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[#00bbff] font-consolas text-sm mt-4 hover:opacity-80"
+                >
+                  View on Behance <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
