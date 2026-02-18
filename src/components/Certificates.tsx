@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { X, Award, ExternalLink } from 'lucide-react';
 
 interface Certificate {
@@ -19,6 +20,7 @@ const Certificates: React.FC = () => {
 
   // Handle modal open with animation
   const openModal = () => {
+    document.body.style.overflow = 'hidden';
     setShowAllCertificates(true);
     setTimeout(() => setIsModalVisible(true), 10);
   };
@@ -26,7 +28,10 @@ const Certificates: React.FC = () => {
   // Handle modal close with animation
   const closeModal = () => {
     setIsModalVisible(false);
-    setTimeout(() => setShowAllCertificates(false), 300);
+    setTimeout(() => {
+      setShowAllCertificates(false);
+      document.body.style.overflow = '';
+    }, 300);
   };
 
   const certificates: Certificate[] = [
@@ -184,9 +189,11 @@ const Certificates: React.FC = () => {
       </div>
 
       {/* All Certificates Modal */}
-      {showAllCertificates && (
-        <div className={`fixed inset-0 bg-black/90 z-50 overflow-y-auto transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className={`max-w-[1112px] mx-auto px-[20px] py-8 transition-all duration-300 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+      {showAllCertificates && ReactDOM.createPortal(
+        <div 
+          className={`fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black z-50 overflow-y-auto transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <div className={`min-h-full max-w-[1112px] mx-auto px-[20px] py-8 transition-all duration-300 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-[36px] font-bold text-white font-montserrat uppercase">
                 All Certificates
@@ -250,12 +257,15 @@ const Certificates: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Certificate Viewer Modal */}
-      {selectedCertificate && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+      {selectedCertificate && ReactDOM.createPortal(
+        <div 
+          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black z-[60] flex items-center justify-center p-4"
+        >
           <div className="relative w-full max-w-4xl">
             <button 
               onClick={() => setSelectedCertificate(null)}
@@ -293,7 +303,8 @@ const Certificates: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

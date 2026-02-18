@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { ExternalLink, Play, X } from 'lucide-react';
 
 interface Project {
@@ -23,6 +24,7 @@ const Projects: React.FC = () => {
 
   // Handle modal open with animation
   const openModal = () => {
+    document.body.style.overflow = 'hidden';
     setShowAllProjects(true);
     setTimeout(() => setIsModalVisible(true), 10);
   };
@@ -30,7 +32,10 @@ const Projects: React.FC = () => {
   // Handle modal close with animation
   const closeModal = () => {
     setIsModalVisible(false);
-    setTimeout(() => setShowAllProjects(false), 300);
+    setTimeout(() => {
+      setShowAllProjects(false);
+      document.body.style.overflow = '';
+    }, 300);
   };
 
   const projects: Project[] = [
@@ -348,9 +353,11 @@ const Projects: React.FC = () => {
       </div>
 
       {/* All Projects Modal */}
-      {showAllProjects && (
-        <div className={`fixed inset-0 bg-black/90 z-50 overflow-y-auto transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className={`max-w-[1112px] mx-auto px-[20px] py-8 transition-all duration-300 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+      {showAllProjects && ReactDOM.createPortal(
+        <div 
+          className={`fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black z-50 overflow-y-auto transition-opacity duration-300 ${isModalVisible ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <div className={`min-h-full max-w-[1112px] mx-auto px-[20px] py-8 transition-all duration-300 ${isModalVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-[36px] font-bold text-white font-montserrat uppercase">
                 All Projects
@@ -414,12 +421,16 @@ const Projects: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Video Player Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+      {selectedVideo && ReactDOM.createPortal(
+        <div 
+          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black z-[60] flex items-center justify-center p-4"
+          style={{ position: 'fixed' }}
+        >
           <div className="relative w-full max-w-4xl">
             <button 
               onClick={() => setSelectedVideo(null)}
@@ -454,7 +465,8 @@ const Projects: React.FC = () => {
               )}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
